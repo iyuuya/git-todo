@@ -1,0 +1,10 @@
+README
+======
+
+Usage
+-----
+
+```sh
+git todo          #=> git grep '\[todo\]'
+git todo preview  #=> git grep '\[preview\]'
+```
