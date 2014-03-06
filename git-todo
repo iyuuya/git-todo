@@ -1,0 +1,31 @@
+#!/bin/sh
+
+export GIT_TODO_DIR=$(dirname "$(echo "$0" | sed -e 's,\\,/,g')")
+
+usage () {
+  echo "usage: git todo [word]"
+}
+
+cmd_default() {
+  cmd_todo_list "todo"
+}
+
+cmd_todo_list() {
+  git grep '\['$@'\]'
+}
+
+main() {
+  if [ $# -lt 1 ]; then
+    cmd_default
+    exit 1
+  fi
+
+  if [ "$1" = '-h' ] || [ "$1" = '--help' ]; then
+    usage
+    exit 1
+  fi
+
+  cmd_todo_list "$@"
+}
+
+main "$@"
