@@ -11,7 +11,7 @@ cmd_default() {
 }
 
 cmd_todo_list() {
-  git grep '\['$@'\]'
+  git grep -niI '\['$@'\]'
 }
 
 main() {
